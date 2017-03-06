@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const compression = require(‘compression’);
+const compression = require('compression');
 
 // Run the app by serving the static files
 // in the dist directory
