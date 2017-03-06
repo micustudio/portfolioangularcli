@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const compression = require('compression');
+app.use(compression());
 
 // Run the app by serving the static files
 // in the dist directory
@@ -11,7 +12,7 @@ app.use(express.static(__dirname + '/dist'));
 // Heroku port
 app.listen(process.env.PORT || 8080);
 
-app.use(compression());
+
 
 // For all GET requests, send back index.html
 // so that PathLocationStrategy can be used
