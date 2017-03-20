@@ -3,6 +3,9 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const compression = require('compression');
+const appRoutes = require('./routes/app');
+
+
 app.use(compression());
 
 // Run the app by serving the static files
@@ -13,9 +16,10 @@ app.use(express.static(__dirname + '/dist'));
 app.listen(process.env.PORT || 8080);
 
 
+app.use('/', appRoutes);
 
-// For all GET requests, send back index.html
-// so that PathLocationStrategy can be used
-app.get('/*', function(req, res) {
+
+app.use(function(req, res, next) {
   res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
+
